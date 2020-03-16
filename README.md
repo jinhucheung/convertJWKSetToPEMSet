@@ -1,14 +1,27 @@
 # Convert JWK to PEM
-A simple utility written in Java + Camel to fetch a JWK Set from an IDP URL and then produce the Public Key
+
+A simple utility written in Java + Camel to fetch a JWK Set from an IDP URL and then produce the Public Key. And RSA256 encrypt by public key.
 
 Usage:
 
-	java -jar jwkset-encrypt-1.0.0-SNAPSHOT.jar <URL> <Text>...
+```
+$	java -jar jwkset-encrypt-1.0.0-SNAPSHOT.jar <URL> <Text>...
+```
 
 Both http and https address are supported. For https, this utility assumes that the cert as been imported into the JDK cacerts.
 
-As an example, the procedure to import a cert is the following.  The cert itself can be obtained from the browser or the original keystore.
+For Jmeter, add jwkset-encrypt-1.0.0-SNAPSHOT.jar to `$JMETER_HOME/lib/ext`.
 
-	sudo keytool -import -trustcacerts -file ${CERT_LOCATION}/openam.mydomain.com.crt -alias open.mydomain.com -keystore ${JAVA_HOME}/jre/lib/security/cacerts
+Then import this jar into `Test Plan`. And use it in `JSR223 PreProcessor`, example:
 
-	keytool -list -v -keystore ./cacerts | grep openam.mydomain
+```
+import com.redhat.utility.JWKSetEncrypt;
+
+log.info(JWKSetEncrypt.ping());
+
+String[] logins = {vars.get("username"), vars.get("password")};
+String[] encryptedTexts = JWKSetEncrypt.encrypt(vars.get("jkws_url"), logins);
+
+vars.put("encrypted_username", encryptedTexts[0]);
+vars.put("encrypted_password", encryptedTexts[1]);
+```
