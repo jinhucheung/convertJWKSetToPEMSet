@@ -5,7 +5,7 @@ A simple utility written in Java + Camel to fetch a JWK Set from an IDP URL and 
 Usage:
 
 ```
-$	java -jar jwkset-encrypt-1.0.0-SNAPSHOT.jar <URL> <Text>...
+$ java -jar jwkset-encrypt-1.0.0-SNAPSHOT.jar <URL> <Text>...
 ```
 
 Both http and https address are supported. For https, this utility assumes that the cert as been imported into the JDK cacerts.
