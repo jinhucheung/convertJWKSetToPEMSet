@@ -99,7 +99,6 @@ public class PublicKeyProcessor implements Processor {
 		}
 
 		return returnableStr;
-
 	}
 
 }

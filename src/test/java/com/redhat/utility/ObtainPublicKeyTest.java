@@ -32,9 +32,9 @@ public class ObtainPublicKeyTest extends CamelTestSupport {
 		Path path = Paths.get(getClass().getClassLoader().getResource("JWKSet.json").toURI());
 
 		String jwkJsonKeys = Files.lines(path).collect(Collectors.joining());
-		
+
 		LOG.info("stringFromFile: " + jwkJsonKeys);
-		
+
 
 		successEndpoint.expectedMessageCount(1);
 		failureEndpoint.expectedMessageCount(0);
@@ -45,7 +45,7 @@ public class ObtainPublicKeyTest extends CamelTestSupport {
 
 		assertTrue(result.contains(
 				"Zwccwo08daa34sQPUwblJ3"));
-		
+
 		assertTrue(result.contains("MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5ShJuYfZN7eOp95QZWDqDsSksI9cx9vaLkdlPwC/2oaQCyGTGoGITD2n+1dkFMo2rwmZfEQ0hbW6BnxejYHWiC5zPUp3Lia6qOmldljJTBbeuPcG9DIjEeb1BfsBsUIUa4I1DvowokjotturmBaqKaEUZNQrX0Qv1+4tkPAbjCwb7SHtjR4SR4MM/vMQdPHd0FusaXz/r3OettC58C8McLc6b4TOGRySFw8RDlq6lL1d0E3mCtOSWe0iYS2Ow2J4bu5QQXBFioqj9L4cxctaK8EANZwUoktfjEl4rmEwdpB5GBdlFImJs1zm1O3fFR8CBPo8qcKTz8QFEsGrBh+bBwIDAQAB"));
 
 		successEndpoint.assertIsSatisfied();
