@@ -10,7 +10,7 @@ $	java -jar jwkset-encrypt-1.0.0-SNAPSHOT.jar <URL> <Text>...
 
 Both http and https address are supported. For https, this utility assumes that the cert as been imported into the JDK cacerts.
 
-For Jmeter, add jwkset-encrypt-1.0.0-SNAPSHOT.jar to `$JMETER_HOME/lib/ext`.
+For Jmeter, add [jwkset-encrypt-1.0.0-SNAPSHOT.jar](https://github.com/jinhucheung/convertJWKSetToPEMSet/releases/download/v0.1.0/jwkset-encrypt-1.0.0-SNAPSHOT.jar) to `$JMETER_HOME/lib/ext`.
 
 Then import this jar into `Test Plan`. And use it in `JSR223 PreProcessor`, example:
 
